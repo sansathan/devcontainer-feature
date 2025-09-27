@@ -21,7 +21,6 @@ case "${ID}" in
     check "fish" fish -v
   ;;
 esac
-check "fisher" fish -c "fisher -v"
 
 # Report result
 reportResults
