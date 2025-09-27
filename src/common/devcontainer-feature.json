@@ -1,0 +1,9 @@
+{
+    "name": "Common Utilities",
+    "id": "common",
+    "version": "1.0.0",
+    "description": "Common utilities for Dev Containers",
+    "installsAfter": [
+        "ghcr.io/devcontainers/features/common-utils"
+    ]
+}

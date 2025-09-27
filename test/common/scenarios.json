@@ -1,0 +1,9 @@
+{
+    "basic": {
+        "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+        "features": {
+            "common": {}
+        },
+        "remoteUser": "sag"
+    }
+}
