@@ -1,7 +1,7 @@
 {
     "name": "Common Utilities",
     "id": "common",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Common utilities for Dev Containers",
     "documentationURL": "https://github.com/sansathan/devcontainer-feature/tree/main/src/common",
     "customizations": {
