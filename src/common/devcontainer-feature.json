@@ -3,6 +3,14 @@
     "id": "common",
     "version": "1.0.0",
     "description": "Common utilities for Dev Containers",
+    "documentationURL": "https://github.com/sansathan/devcontainer-feature/tree/main/src/common",
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "terminal.integrated.defaultProfile.linux": "fish"
+            }
+        }
+    },
     "installsAfter": [
         "ghcr.io/devcontainers/features/common-utils"
     ]

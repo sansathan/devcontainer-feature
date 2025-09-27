@@ -3,25 +3,20 @@ set -e
 
 echo "Activating common utilities feature"
 
-# Install fish and starship
-apt-get update -y && apt-get install -y --no-install-recommends \
-    fish \
-    starship \
-    && rm -rf /var/lib/apt/lists/*
+bash ./install_fish.sh
+bash ./install_starship.sh
 
-# Make fish the default shell for the remote user
-if [ -n "$_REMOTE_USER" ]; then
-    echo "Changing default shell for user '$_REMOTE_USER' to fish"
-    chsh -s "$(which fish)" "$_REMOTE_USER"
-    mkdir -p "/home/$_REMOTE_USER/.config/fish"
-    echo "starship init fish | source" > "/home/$_REMOTE_USER/.config/fish/config.fish"
-    chown -R "$_REMOTE_USER" "/home/$_REMOTE_USER/.config/fish"
-elif [ -n "$_CONTAINER_USER" ]; then
-    echo "Changing default shell for user '$_CONTAINER_USER' to fish"
-    chsh -s "$(which fish)" "$_CONTAINER_USER"
-    mkdir -p "/home/$_CONTAINER_USER/.config/fish"
-    echo "starship init fish | source" > "/home/$_CONTAINER_USER/.config/fish/config.fish"
-    chown -R "$_CONTAINER_USER" "/home/$_CONTAINER_USER/.config/fish"
-else
-    echo "No remote or container user specified, skipping default shell change"
-fi
+# Get all possible non-root users
+POSSIBLE_USERS=("vscode" "node" "codespace" "$(awk -v val=1000 -F ":" '$3==val{print $1}' /etc/passwd)")
+# create .config/fish if it doesn't exist
+for CURRENT_USER in "${POSSIBLE_USERS[@]}"; do
+  if id -u ${CURRENT_USER} > /dev/null 2>&1; then
+    USERNAME=${CURRENT_USER}
+    if [ ! -d "/home/${USERNAME}/.config/fish" ]; then
+      mkdir -p "/home/${USERNAME}/.config/fish"
+      chown -R ${USERNAME} "/home/${USERNAME}/.config"
+      echo "starship init fish | source" >> "/home/${USERNAME}/.config/fish/config.fish"
+    fi
+    break
+  fi
+done
