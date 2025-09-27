@@ -17,4 +17,4 @@ Common utilities for Dev Containers
 
 ---
 
-_Note: This file was auto-generated from the [devcontainer-feature.json](devcontainer-feature.json).  Add additional notes to a `NOTES.md`._
+_Note: This file was auto-generated from the [devcontainer-feature.json](https://github.com/sansathan/devcontainer-feature/blob/main/src/common/devcontainer-feature.json).  Add additional notes to a `NOTES.md`._
