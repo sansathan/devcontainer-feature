@@ -12,6 +12,10 @@ POSSIBLE_USERS=("vscode" "node" "codespace" "$(awk -v val=1000 -F ":" '$3==val{p
 for CURRENT_USER in "${POSSIBLE_USERS[@]}"; do
   if id -u ${CURRENT_USER} > /dev/null 2>&1; then
     USERNAME=${CURRENT_USER}
+    # if USERNAME is empty, set it to root
+    if [ -z "${USERNAME}" ]; then
+      USERNAME=root
+    fi
     if [ ! -d "/home/${USERNAME}/.config/fish" ]; then
       mkdir -p "/home/${USERNAME}/.config/fish"
       chown -R ${USERNAME} "/home/${USERNAME}/.config"
