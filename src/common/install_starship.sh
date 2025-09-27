@@ -4,6 +4,7 @@ set -o pipefail
 set -o noclobber
 set -o nounset
 set -o allexport
+VERSION=${VERSION:-"latest"}
 readonly githubRepository='starship/starship'
 readonly binaryName='starship'
 readonly versionArgument='--version'
