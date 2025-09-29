@@ -14,10 +14,11 @@ jobs:
       matrix:
         features:
           - common
+          - dind
         baseImage:
           - debian:latest
           - ubuntu:latest
-          - mcr.microsoft.com/devcontainers/base:ubuntu
+          - ubuntu:plucky
     steps:
       - uses: actions/checkout@v4
 
@@ -34,6 +35,7 @@ jobs:
       matrix:
         features:
           - common
+          - dind
     steps:
       - uses: actions/checkout@v4
 
